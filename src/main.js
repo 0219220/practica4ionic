@@ -23,9 +23,29 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAI0MWaOmtszTr-PNzRrXUrcIByfgpUrjw",
+  authDomain: "practica4ionic.firebaseapp.com",
+  projectId: "practica4ionic",
+  storageBucket: "practica4ionic.appspot.com",
+  messagingSenderId: "691948816187",
+  appId: "1:691948816187:web:11039d5b0f6111d05e991e"
+};
+
+// Initialize Firebase
+const appFirebase = initializeApp(firebaseConfig);
+
+
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(appFirebase);
   
 router.isReady().then(() => {
   app.mount('#app');

@@ -1,34 +1,30 @@
 <template>
   <ion-page>
-     <ion-header :translucent="true">
+    <ion-header>
       <ion-toolbar>
-        <ion-title>Home</ion-title>
+        <ion-title>Claves</ion-title>
       </ion-toolbar>
     </ion-header>
-    
     <ion-content :fullscreen="true">
-  
-      
-        
-    <ion-tabs>
-      <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="tab1" href="/Tab1Page">
-          <ion-icon :icon="triangle" />
-          <ion-label>Claves</ion-label>
-        </ion-tab-button> 
-        
-        <ion-tab-button tab="tab2" href="/tabs/tab2">
-          <ion-icon :icon="triangle" />
-          <ion-label>Usuarios</ion-label>
-        </ion-tab-button> 
-
-        <ion-tab-button tab="tab3" href="/tabs/tab3">
-          <ion-icon :icon="triangle" />
-          <ion-label>Agregar Claves</ion-label>
-        </ion-tab-button>    
-      </ion-tab-bar>
-    </ion-tabs></ion-content>
+ <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>Claves</div>
+        </ion-col>
+        <ion-col>
+          <div>Status</div>
+        </ion-col>
+      </ion-row>
+      <ion-row v-for="(item,index) in listaClaves" :key="index">
+      <ion-col>
+        <div>{{listaKeys[index]}}</div>
+      </ion-col>
+      <ion-col>
+        <div>{{item.status}}</div>
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+    </ion-content>
   </ion-page>
 </template>
 
@@ -36,18 +32,25 @@
 import {
 IonPage,
 IonHeader,
-IonToolbar,IonTitle,
+IonToolbar,
+IonTitle,
 IonContent,
+IonCol,
+IonGrid,
+IonRow,
 } from "@ionic/vue";
 import { getDatabase, ref, onValue } from "firebase/database";
 export default {
-name: "HomePage",
+name: "Tab1Page",
 components: {
 IonHeader,
 IonToolbar,
 IonTitle,
 IonContent,
 IonPage,
+IonCol,
+IonGrid,
+IonRow,
 },
 mounted() {
 const db = getDatabase();
@@ -71,6 +74,7 @@ listaKeys:[]
 };
 </script>
 
+
 <style>
 ion-col > div {
 background-color: #f7f7f7;
@@ -78,4 +82,3 @@ border: solid 1px #ddd;
 padding: 10px;
 }
 </style>
-

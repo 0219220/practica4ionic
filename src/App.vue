@@ -7,7 +7,8 @@
 <script>
 import { 
   IonApp, 
-  IonRouterOutlet
+  IonRouterOutlet,
+  
 } from '@ionic/vue';
 
 import { defineComponent } from 'vue';
